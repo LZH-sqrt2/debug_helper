@@ -17,6 +17,7 @@ class Logger:
     def log_msg(self, level: str, information: str, caller_name: str):
         if level == "DEBUG":
             print(Fore.GREEN + str(datetime.datetime.now()) + Fore.RESET + "|" + Fore.BLACK + Back.BLUE + level + Fore.RESET + Back.RESET + "  " + "|" + Fore.CYAN + caller_name + Fore.RESET + "|" + Fore.BLUE + information + Back.RESET + Style.RESET_ALL + Fore.RESET)
+        # debugging
         if level == "INFO":
             print(Fore.GREEN + str(
                 datetime.datetime.now()) + Fore.RESET + "|" + self.level + Fore.RESET + Back.RESET + "   " + "|" + Fore.CYAN + caller_name + Fore.RESET + "|" + self.information + Back.RESET + Style.RESET_ALL + Fore.RESET)
