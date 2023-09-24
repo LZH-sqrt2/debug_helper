@@ -4,6 +4,7 @@ import traceback
 import datetime
 from lib.colorama import Fore, Back, Style
 
+
 class Logger:
     def __init__(self):
         self.level = "null"

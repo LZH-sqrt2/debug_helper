@@ -1,4 +1,5 @@
 import inspect
+import functools
 
 
 class CallerHelper:
@@ -20,3 +21,18 @@ class CallerHelper:
                 return Object[0]
 
         self.__reset__()
+
+
+def AccessControlCharacters(level: str):
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            caller_frame = inspect.currentframe().f_back
+            caller_module = inspect.getmodule(caller_frame)
+            caller__name__ = caller_module.__name__
+            print(caller__name__ + level)
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
+
+

@@ -1,7 +1,4 @@
-from datetime import datetime
-
 import logger
-import datetime
 import helper
 
 __version__ = "0.0.1pre"
@@ -11,6 +8,7 @@ __author__ = "LZH <https://github.com/LZH-sqrt2>"
 if __name__ == "__main__":
     test_logger = logger.Logger()
 
+    @helper.AccessControlCharacters(level="public")
     def f():
         test_logger.debug("in f")
     f()
