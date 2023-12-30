@@ -20,23 +20,20 @@ class Logger:
             print(Fore.GREEN + str(datetime.datetime.now()) + Fore.RESET + "|" + Fore.BLACK + Back.BLUE + level + Fore.RESET + Back.RESET + "  " + "|" + Fore.CYAN + caller_name + Fore.RESET + "|" + Fore.BLUE + information + Back.RESET + Style.RESET_ALL + Fore.RESET)
         # debugging
         if level == "INFO":
-            print(Fore.GREEN + str(
-                datetime.datetime.now()) + Fore.RESET + "|" + self.level + Fore.RESET + Back.RESET + "   " + "|" + Fore.CYAN + caller_name + Fore.RESET + "|" + self.information + Back.RESET + Style.RESET_ALL + Fore.RESET)
+            print(Fore.GREEN + str(datetime.datetime.now()) + Fore.RESET + "|" + self.level + Fore.RESET + Back.RESET + "   " + "|" + Fore.CYAN + caller_name + Fore.RESET + "|" + self.information + Back.RESET + Style.RESET_ALL + Fore.RESET)
         if level == "WARNING":
-            print(Fore.GREEN + str(
-                datetime.datetime.now()) + Fore.RESET + "|" + Fore.YELLOW + Style.ITALIC + Style.BOLD + self.level + Style.RESET_ALL + Fore.RESET + Back.RESET + "|" + Fore.CYAN + caller_name + Fore.RESET + "|" + Fore.YELLOW + self.information + Back.RESET + Style.RESET_ALL + Fore.RESET)
+            print(Fore.GREEN + str(datetime.datetime.now()) + Fore.RESET + "|" + Fore.YELLOW + Style.ITALIC + Style.BOLD + self.level + Style.RESET_ALL + Fore.RESET + Back.RESET + "|" + Fore.CYAN + caller_name + Fore.RESET + "|" + Fore.YELLOW + self.information + Back.RESET + Style.RESET_ALL + Fore.RESET)
         if level == "ERROR":
-            print(Fore.GREEN + str(
-                datetime.datetime.now()) + Fore.RESET + "|" + Fore.RED + Style.BOLD + self.level + Style.RESET_ALL + "  " + Fore.RESET + Back.RESET + "|" + Fore.CYAN + caller_name + Fore.RESET + "|" + Fore.RED + Style.BOLD + Style.ITALIC + self.information + Back.RESET + Style.RESET_ALL + Fore.RESET)
+            print(Fore.GREEN + str(datetime.datetime.now()) + Fore.RESET + "|" + Fore.RED + Style.BOLD + self.level + Style.RESET_ALL + "  " + Fore.RESET + Back.RESET + "|" + Fore.CYAN + caller_name + Fore.RESET + "|" + Fore.RED + Style.BOLD + Style.ITALIC + self.information + Back.RESET + Style.RESET_ALL + Fore.RESET)
 
         self.__reset__()
 
     def debug(self, information: str):
-        self.level = "DEBUG"
-        self.information = information
         caller_name = traceback.extract_stack()[-2][2]
         if caller_name == "<module>":
             caller_name = "<Not in void>"
+        self.level = "DEBUG"
+        self.information = information
         # print(Fore.GREEN + str(datetime.datetime.now()) + Fore.RESET + "|" + Fore.BLACK + Back.BLUE + self.level + Fore.RESET + Back.RESET + "  " + "|" + Fore.CYAN + caller_name + Fore.RESET + "|" + Fore.BLUE + self.information + Back.RESET + Style.RESET_ALL + Fore.RESET)
         self.log_msg(self.level, self.information, caller_name)
         self.__reset__()
@@ -47,7 +44,8 @@ class Logger:
             caller_name = "<Not in void>"
         self.level = "INFO"
         self.information = information
-        print(Fore.GREEN + str(datetime.datetime.now()) + Fore.RESET + "|" + self.level + Fore.RESET + Back.RESET + "   " + "|" + Fore.CYAN + caller_name + Fore.RESET + "|" + self.information + Back.RESET + Style.RESET_ALL + Fore.RESET)
+        #print(Fore.GREEN + str(datetime.datetime.now()) + Fore.RESET + "|" + self.level + Fore.RESET + Back.RESET + "   " + "|" + Fore.CYAN + caller_name + Fore.RESET + "|" + self.information + Back.RESET + Style.RESET_ALL + Fore.RESET)
+        self.log_msg(self.level, self.information, caller_name)
         self.__reset__()
 
     def warning(self, information: str):

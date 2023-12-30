@@ -6,7 +6,9 @@ class CallerHelper:
     def __init__(self):
         self.stack = inspect.stack()
         self.caller_globals = self.stack[1].frame.f_globals
-        self.id16 = "0x0000000000000000"
+        self.id_length = len(str(hex(id(self))[2:]))  # This computer id's length
+        self.id16_length = len(str(hex(id(self))[2:].upper()))
+        self.id16 = "0x" + "0" * (self.id_length - self.id16_length) + str(hex(id(self))[2:].upper())
 
     def __reset__(self):
         self.__init__()
@@ -32,7 +34,7 @@ def AccessControlCharacters(level: str):
             caller__name__ = caller_module.__name__
             print(caller__name__ + level)
             return func(*args, **kwargs)
+
         return wrapper
+
     return decorator
-
-
